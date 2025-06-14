@@ -1,0 +1,24 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background: linear-gradient(120deg, #e2ebf0 0%, #f9fbfd 100%);
+    font-family: 'Nunito', 'Poppins', sans-serif;
+    min-height: 100vh;
+    /* fallback for background image when scrolling */
+    position: relative;
+    z-index: 0;
+  }
+}
+
+/* Custom keyframes for subtle floating animation for bg */
+@keyframes float-bg {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.06) translateY(18px); }
+}
+.bg-float-anim {
+  animation: float-bg 16s ease-in-out infinite;
+}
