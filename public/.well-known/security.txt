@@ -1,0 +1,6 @@
+Contact: mailto:contact@apexhealthcare.life
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://apexhealthcare.life/.well-known/security.txt
+Policy: https://apexhealthcare.life/security-policy
+Hiring: https://apexhealthcare.life/careers 
