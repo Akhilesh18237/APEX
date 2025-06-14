@@ -1,4 +1,3 @@
-
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Services from "@/components/Services";
@@ -7,8 +6,12 @@ import EnquiryForm from "@/components/EnquiryForm";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const Index = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground relative overflow-x-hidden">
       {/* Animated background image */}
@@ -25,12 +28,12 @@ const Index = () => {
       />
       {/* Animate navbar */}
       <motion.header
-        className="bg-white shadow"
+        className="bg-white shadow fixed w-full top-0 z-50"
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 52, damping: 12, delay: 0.03 }}
       >
-        <nav className="max-w-6xl mx-auto py-4 flex justify-between items-center px-2 sm:px-4">
+        <nav className="max-w-6xl mx-auto py-4 flex justify-between items-center px-4">
           <div className="flex gap-3 items-center">
             <img
               src="/lovable-uploads/c7bf229c-d261-4aa0-9b37-f5aa4833d7c0.png"
@@ -40,13 +43,45 @@ const Index = () => {
             />
             <span className="font-poppins text-base md:text-2xl font-bold text-blue-900">Apex Elder Care</span>
           </div>
-          <ul className="flex gap-3 md:gap-6 font-poppins text-blue-900 text-sm md:text-lg">
-            <li><a href="#about" className="hover:text-orange transition story-link">About</a></li>
-            <li><a href="#services" className="hover:text-orange transition story-link">Services</a></li>
-            <li><a href="#gallery" className="hover:text-orange transition story-link">Gallery</a></li>
-            <li><a href="#enquiry" className="hover:text-orange transition story-link">Enquiry</a></li>
-            <li><a href="#contact" className="hover:text-orange transition story-link">Contact</a></li>
+
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-2 text-blue-900"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          {/* Desktop menu */}
+          <ul className="hidden md:flex gap-6 font-poppins text-blue-900 text-lg">
+            <li><a href="#about" className="hover:text-orange transition">About</a></li>
+            <li><a href="#services" className="hover:text-orange transition">Services</a></li>
+            <li><a href="#gallery" className="hover:text-orange transition">Gallery</a></li>
+            <li><a href="#enquiry" className="hover:text-orange transition">Enquiry</a></li>
+            <li><a href="#contact" className="hover:text-orange transition">Contact</a></li>
           </ul>
+
+          {/* Mobile menu */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full left-0 right-0 bg-white shadow-lg md:hidden"
+              >
+                <ul className="flex flex-col font-poppins text-blue-900">
+                  <li><a href="#about" className="block px-4 py-3 hover:bg-blue-50 hover:text-orange transition" onClick={() => setIsMenuOpen(false)}>About</a></li>
+                  <li><a href="#services" className="block px-4 py-3 hover:bg-blue-50 hover:text-orange transition" onClick={() => setIsMenuOpen(false)}>Services</a></li>
+                  <li><a href="#gallery" className="block px-4 py-3 hover:bg-blue-50 hover:text-orange transition" onClick={() => setIsMenuOpen(false)}>Gallery</a></li>
+                  <li><a href="#enquiry" className="block px-4 py-3 hover:bg-blue-50 hover:text-orange transition" onClick={() => setIsMenuOpen(false)}>Enquiry</a></li>
+                  <li><a href="#contact" className="block px-4 py-3 hover:bg-blue-50 hover:text-orange transition" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
       </motion.header>
       {/* Animate sections and footer */}
