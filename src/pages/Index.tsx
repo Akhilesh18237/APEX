@@ -33,20 +33,20 @@ const Index = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 52, damping: 12, delay: 0.03 }}
       >
-        <nav className="max-w-6xl mx-auto py-4 flex justify-between items-center px-4">
-          <div className="flex gap-3 items-center">
+        <nav className="max-w-6xl mx-auto py-3 md:py-4 flex justify-between items-center px-4">
+          <div className="flex gap-2 md:gap-3 items-center min-w-0">
             <img
               src="/lovable-uploads/c7bf229c-d261-4aa0-9b37-f5aa4833d7c0.png"
               alt="Apex Elder Care Logo"
-              className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white p-1 shadow-lg animate-scale-in"
+              className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white p-1 shadow-lg animate-scale-in flex-shrink-0"
               style={{objectFit: "contain", background: "white"}}
             />
-            <span className="font-poppins text-base md:text-2xl font-bold text-blue-900">Apex Elder Care</span>
+            <span className="font-poppins text-sm md:text-2xl font-bold text-blue-900 truncate">Apex Elder Care</span>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 text-blue-900"
+            className="md:hidden p-2 text-blue-900 flex-shrink-0"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -85,7 +85,7 @@ const Index = () => {
         </nav>
       </motion.header>
       {/* Animate sections and footer */}
-      <main className="flex-1 w-full flex flex-col">
+      <div className="pt-20 md:pt-24">
         <AnimatePresence mode="wait">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -137,7 +137,7 @@ const Index = () => {
             <Contact />
           </motion.div>
         </AnimatePresence>
-      </main>
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
