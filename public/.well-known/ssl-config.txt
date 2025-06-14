@@ -1,0 +1,5 @@
+SSL Configuration for apexhealthcare.life
+Issuer: Let's Encrypt
+Valid until: 2025-09-13
+Domain: apexhealthcare.life
+www.apexhealthcare.life 

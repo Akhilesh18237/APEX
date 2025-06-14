@@ -29,6 +29,15 @@ jobs:
       - name: Create .nojekyll file
         run: touch dist/.nojekyll
 
+      - name: Create SSL config
+        run: |
+          mkdir -p dist/.well-known
+          echo "SSL Configuration for apexhealthcare.life" > dist/.well-known/ssl-config.txt
+          echo "Issuer: Let's Encrypt" >> dist/.well-known/ssl-config.txt
+          echo "Valid until: 2025-09-13" >> dist/.well-known/ssl-config.txt
+          echo "Domain: apexhealthcare.life" >> dist/.well-known/ssl-config.txt
+          echo "www.apexhealthcare.life" >> dist/.well-known/ssl-config.txt
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
