@@ -1,17 +1,14 @@
-
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const phone = "+91 7610-122-133";
-const email = "apexhealthcare@gmail.com";
+const email = "apexhealthcarebhopal@gmail.com";
 const address = "B-17, Subhash Colony, Ashoka Garden, Bhopal, M.P. 462023";
 
 const addressQuery = encodeURIComponent(address);
 const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${addressQuery}`;
 
-// Gmail compose link for mailto
-const gmailComposeLink = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(
-  email
-)}&su=${encodeURIComponent("Enquiry for Eldercare Services")}`;
+// Remove gmailComposeLink and use mailto link directly
+const mailtoLink = `mailto:${email}?subject=Enquiry%20for%20Eldercare%20Services`;
 
 const Contact = () => (
   <section id="contact" className="py-10 px-4 bg-blue-50">
@@ -27,7 +24,7 @@ const Contact = () => (
           {phone}
         </a>
         <a
-          href={gmailComposeLink}
+          href={mailtoLink}
           className="flex items-center gap-2 bg-blue-900 hover:bg-orange text-white py-3 px-6 rounded-full font-poppins font-bold text-lg transition hover:scale-105 shadow"
           aria-label="Email Apex Elder Care via Gmail"
           target="_blank"
@@ -48,7 +45,6 @@ const Contact = () => (
         </a>
       </div>
       <p className="mt-4 text-blue-800 font-nunito text-center">{address}</p>
-      <a href="https://www.apexbhopal.com" className="text-blue-900 underline font-nunito mt-2 hover:text-orange">www.apexbhopal.com</a>
     </div>
   </section>
 );
