@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { User, Heart, Stethoscope, Truck, BriefcaseMedical } from "lucide-react";
 
@@ -27,7 +26,13 @@ const services = [
     label: "Ambulance Service",
     icon: Truck,
     description: "24/7 ambulance for safe & timely care."
-  }
+  },
+  {
+    label: "Complete ICU Setup at Home",
+    icon: "ICU",
+    description: "Comprehensive ICU setup and monitoring at home for critical care.",
+    image: "https://thumbs.dreamstime.com/b/print-137771595.jpg"
+  },
 ];
 
 const Services = () => (
@@ -75,7 +80,11 @@ const Services = () => (
               transition={{ duration: 0.25, type: "spring" }}
               className=""
             >
-              <srv.icon size={38} className="text-orange group-hover:scale-125 transition-transform mb-2" aria-label="" />
+              {srv.image ? (
+                <img src={srv.image} alt={srv.label} style={{ width: srv.label === 'Complete ICU Setup at Home' ? 60 : 38, height: srv.label === 'Complete ICU Setup at Home' ? 60 : 38 }} className="mb-2" />
+              ) : (
+                <srv.icon size={38} className="text-orange group-hover:scale-125 transition-transform mb-2" aria-label="" />
+              )}
             </motion.div>
             <span className="font-poppins text-lg font-bold text-blue-900 mb-2 text-center">{srv.label}</span>
             <span className="font-nunito text-blue-800 text-sm text-center">{srv.description}</span>
